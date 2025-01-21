@@ -1,66 +1,88 @@
-# Task management app
+# User Management App with Roles
 
 ## Description
-It is a web app to manage tasks created by user.
+A web application designed to manage users with role-based access control.
 
 ## Installation
 
 ### Prerequisites
-- Nodejs, npm, Docker Desktop
+- Node.js
+- npm
+- Docker Desktop
 
 ### Steps
-- Unzip a zip file in your project root folder
-- Run "npm install" cmd to intall required dependencies of project
-- Configure the databse detail in ".env" file
-Ex.
-    DB_HOST="mysqldb" - specify docker service name
-    DB_USERNAME="user_manager"
-    DB_PASSWORD="usersapp@321"
-    DB_NAME="usersapp"
-
-- Run "npm run start" cmd to start the application
+1. Unzip the provided zip file in your project root folder.
+2. Run the following command to install the required dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure the database details in the `.env` file. Example:
+   ```env
+   DB_HOST="mysqldb" # Specify Docker service name
+   DB_USERNAME="user_manager"
+   DB_PASSWORD="usersapp@321"
+   DB_NAME="usersapp"
+   ```
+4. Start the application by running:
+   ```bash
+   npm run start
+   ```
 
 ## Project Structure
+```
 ├── src
 │   ├── config
 │   │   └── data-source.ts
 │   │   └── database.ts
 │   │   └── env.ts
 │   ├── controllers
-│   │   └── task.controller.ts
 │   │   └── user.controller.ts
+│   │   └── role.controller.ts
 │   ├── entities
-│   │   └── Task.ts
+│   │   └── User.ts
+│   │   └── Role.ts
 │   ├── interfaces
 │   │   └── common.ts
 │   │   └── config.ts
 │   ├── middlewares
 │   │   └── error_handler.ts
 │   │   └── jwt_auth.ts
+│   │   └── role_auth.ts
 │   │   └── maintenance.ts
 │   ├── migrations
-│   │   └── create_task_table.ts
 │   │   └── create_user_table.ts
+│   │   └── create_role_table.ts
+│   │   └── create_user_role_mapping.ts
 │   ├── models
-│   │   └── task.model.ts
 │   │   └── user.model.ts
+│   │   └── role.model.ts
 │   ├── routes
-│   │   └── task.routes.ts
+│   │   └── user.routes.ts
+│   │   └── role.routes.ts
 │   ├── services
-│   │   └── task.service.ts
 │   │   └── user.service.ts
+│   │   └── role.service.ts
 │   ├── utils
 │   │   └── common.ts
 │   │   └── crypto.ts
 │   │   └── error_handler.ts
 │   │   └── jwt.ts
-│   │   └── user_auth.ts
+│   │   └── role_auth.ts
 ├── .env
 ├── package.json
 ├── README.md
 └── tsconfig.json
+```
+
+## Features
+- Role-based access control for users.
+- Secure user authentication using JWT.
+- Management of user roles and permissions.
+- Middleware for role and maintenance checks.
+- Database migrations for user-role schema.
 
 ## Contact
-If you have any questions or issues, please feel free to contact:
-1. Name: Sasic Dev
-2. Email: sasics.2394@gmail.com
+If you have any questions or encounter issues, please feel free to contact:
+1. **Name**: Sasic Dev
+2. **Email**: sasics.2394@gmail.com
+
