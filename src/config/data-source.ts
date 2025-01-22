@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { EnvConfig } from "./env";
+import { EnvConfig } from "./env.js";
 
 const appDatasource = new DataSource({
     type: "mysql",

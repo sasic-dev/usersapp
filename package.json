@@ -5,9 +5,9 @@
    "main": "server.js",
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "nodemon && echo 'Development started'",
+      "start": "nodemon --verbose && echo 'Development started'",
       "build": "tsc && echo 'Build Completed'",
-      "prod": "npm run build && node build/server.js && echo 'Production started'"
+      "prod": "npm run build && node --trace-warnings build/server.js && echo 'Production started'"
    },
    "keywords": [],
    "author": "",

@@ -9,18 +9,18 @@ import Redis from 'ioredis';
 const app = express();
 const port: number = EnvConfig.PORT;
 
-const redisClient = new Redis({
-    host: '127.0.0.1',
-    port: 6379
-});
+// const redisClient = new Redis({
+//     host: '127.0.0.1',
+//     port: 6379
+// });
 
-redisClient.on('connect', () => {
-    console.log('Connected to Redis');
-})
+// redisClient.on('connect', () => {
+//     console.log('Connected to Redis');
+// })
 
-redisClient.on('error', () => {
-    console.log('Error connecting to Redis');
-})
+// redisClient.on('error', () => {
+//     console.log('Error connecting to Redis');
+// })
 
 // Middlewares
 app.use(express.json());

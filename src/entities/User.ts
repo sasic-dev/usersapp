@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { UserRefreshToken } from "./UserRefreshToken";
+// import { UserRefreshToken } from "./UserRefreshToken.js";
 
 @Entity("users")
 @Index("UQ_user_email", ["email"], {
@@ -40,6 +40,6 @@ export class User {
   })
   updatedAt!: Date;
 
-  @OneToMany(() => UserRefreshToken, (token) => token.user)
-  refreshTokens!: UserRefreshToken[];
+  // @OneToMany(() => UserRefreshToken, (token) => token.user, { lazy: true })
+  // refreshTokens!: UserRefreshToken[];
 }
