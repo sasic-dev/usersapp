@@ -3,7 +3,7 @@ import jwt, { Algorithm, SignOptions, JwtPayload } from "jsonwebtoken";
 const defaultSecretKey: string = "Q0zJ9L4m8kW2eN1T7rR5dO6xC3VbYpFzA8sKxU0nP7g";
 const defaultOptions = {
     algorithm: "HS256" as Algorithm,
-    issuer: "taskapp-restapi",
+    issuer: "usersapp-restapi",
 }
 
 export async function generateToken(payload: JwtPayload, secretKey: string | null = null, options: SignOptions = {}): Promise<string> {

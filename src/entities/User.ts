@@ -7,6 +7,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
+import { UserRoles } from "../config/constants.js";
+import { UserRolesType } from "../interfaces/common.js";
 // import { UserRefreshToken } from "./UserRefreshToken.js";
 
 @Entity("users")
@@ -25,6 +27,9 @@ export class User {
 
   @Column({ name: "password", type: "varchar" })
   password!: string;
+
+  @Column({ name: 'role', type: 'enum', enum: [...Object.values(UserRoles)], default: UserRoles.USER })
+  role!: keyof UserRolesType;
 
   @Column({ name: "reset_token", type: 'text', nullable: true })
   resetToken: string | null = null;

@@ -1,4 +1,5 @@
 import { MigrationInterface, QueryRunner, Table, TableColumn } from "typeorm";
+import { UserRoles } from "../config/constants.js";
 
 export class UsersMigration1722271346104 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -28,6 +29,13 @@ export class UsersMigration1722271346104 implements MigrationInterface {
             name: "password",
             type: "varchar",
             length: "255",
+          }),
+          new TableColumn({
+            name: 'role',
+            type: 'enum',
+            enum: [...Object.values(UserRoles)],
+            default: `'${UserRoles.USER}'`
+
           }),
           new TableColumn({
             name: 'reset_token',

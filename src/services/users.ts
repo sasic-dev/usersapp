@@ -5,6 +5,8 @@ import { User } from '../entities/User.js';
 import { ServiceResponse } from "../interfaces/common.js";
 import { getErrorMessage } from "../utils/error_handler.js";
 import { JwtPayload } from "jsonwebtoken";
+// import { sendMail } from "../utils/mailer.js";
+// import { EnvConfig } from "../config/env.js";
 
 export class UserService {
     private userModel: UserModel;
@@ -140,7 +142,16 @@ export class UserService {
             await this.userModel.storeResetToken(user.id, resetToken); // Store reset token
 
             // Send email
-            // sendPasswordResetEmail(email, resetToken);
+            // sendMail({
+            //     to: 'sasics.2394@gmail.com',
+            //     from: 'noreply@locallhost.com',
+            //     subject: 'Password Reset Request',
+            //     html: `
+            //         <p>Hello ${user.name},</p>
+            //         <p>Click the following link to reset your password:</p>
+            //         <a href="${EnvConfig.APP_URL}/reset-password?token=${resetToken}">Reset Password</a>
+            //     `
+            // })
 
             return {
                 status: true,

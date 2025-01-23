@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  redis:
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+    networks:
+      - usersapp
+    env_file: 
+      - .env
+
   api:
     build: .
     networks:
@@ -10,21 +19,26 @@ services:
     volumes:
       - .:/app
     depends_on:
+      - redis
       - mysqldb
+    env_file:
+      - .env
 
   mysqldb:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-Hj24KhuP}
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-usersapp}
-      MYSQL_USER: ${MYSQL_USER:-user_manager}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-usersapp@321}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-Hj24KhuP}
+      MYSQL_DATABASE: ${DB_DATABASE:-usersapp}
+      MYSQL_USER: ${DB_USERNAME:-user_manager}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-usersapp@321}
     ports:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
       - usersapp
+    env_file:
+      - .env
 
 volumes:
   mysql-data:

@@ -66,6 +66,7 @@ export class UserModel {
                     "user.id",
                     "user.name",
                     "user.email",
+                    "user.role",
                     "user.password",
                     "user.createdAt",
                     "user.updatedAt",

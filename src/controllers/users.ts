@@ -95,7 +95,18 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction) =>
     }
 }
 
+const protectedContent = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        return res.status(200).json({ message: "Protected content" });
+    } catch (err) {
+        next(err);
+    }
+}
+
 export default {
   register,
   login,
+  requestPasswordReset,
+  resetPassword,
+  protectedContent
 };

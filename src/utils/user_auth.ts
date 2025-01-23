@@ -13,6 +13,16 @@ export class UserAuth {
     private static userId: number = 0;
 
     /**
+     * @property {number} userRole
+     */
+    private static userRole: string = '';
+
+    /**
+     * @property {string} userEmail
+     */
+    private static userEmail: string = '';
+
+    /**
      * Get the user id
      * 
      * This function return the user ID, if the user is validated
@@ -26,6 +36,21 @@ export class UserAuth {
     }
 
     /**
+     * @method getRole
+     * @returns Promise<string>
+     */
+    static async getRole(): Promise<string> {
+        return UserAuth.userRole;
+    }
+
+    /**
+     * @method getEmail
+     * @returns Promise<string>
+     */
+    static async getEmail(): Promise<string> {
+        return UserAuth.userEmail;
+    }
+    /**
      * Validates the user by their id
      * 
      * This function sets the user ID, fetches the user from the database, and returns the user ID
@@ -37,11 +62,19 @@ export class UserAuth {
      */
     static async validate(uid: number): Promise<number> {
         try {
-            UserAuth.userId = uid;
+            
         
             const userModel = new UserModel();
             const user = await userModel.getUserById(uid)
-            return user ? uid : 0;
+            if(!user) {
+                return 0;
+            }
+
+            UserAuth.userId = user.id;
+            UserAuth.userEmail = user.email;
+            UserAuth.userRole = user.role;
+
+            return user.id;
         } catch(err) {
             return 0;
         }
