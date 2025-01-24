@@ -27,7 +27,22 @@ A web application designed to manage users with role-based access control.
    ```bash
    npm run start
    ```
+### Running Migrations in Docker
 
+1. **Install TypeORM inside the Docker container** (if not already installed):
+   ```bash
+   docker exec -it <container_name> npm install typeorm --save
+   ```
+
+2. **Build the project** (if you haven't done this yet):
+   ```bash
+   npm run build
+   ```
+
+3. **Run the migrations**:
+   ```bash
+   docker exec -it <container_name> npx typeorm migration:run -d ./dist/config/data-source.js
+   ```
 ## Project Structure
 ```
 ├── src

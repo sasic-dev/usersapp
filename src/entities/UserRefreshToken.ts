@@ -1,5 +1,5 @@
 import { Entity, JoinColumn, ManyToOne, Column, PrimaryGeneratedColumn } from "typeorm";
-// import { User } from "./User.js";
+import { User } from "./User.js";
 
 @Entity('user_refresh_tokens')
 export class UserRefreshToken {
@@ -33,7 +33,7 @@ export class UserRefreshToken {
   })
   updatedAt!: Date;
 
-  // @ManyToOne(() => User, (user) => user.refreshTokens, { lazy: true })
-  // @JoinColumn({ name: "user_id" })
-  // user!: User;
+  @ManyToOne(() => User, (user) => user.refreshTokens, { lazy: true })
+  @JoinColumn({ name: "user_id" })
+  user!: Promise<User>;
 }

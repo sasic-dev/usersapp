@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+import 'reflect-metadata';
 import { EnvConfig } from './config/env.js';
 import errorHandler, { validationErrorHandler } from './middlewares/error_handler.js';
 import apiRouter from './routes/api.js';

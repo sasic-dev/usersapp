@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { UserRoles } from "../config/constants.js";
 import { UserRolesType } from "../interfaces/common.js";
-// import { UserRefreshToken } from "./UserRefreshToken.js";
+import { UserRefreshToken } from "./UserRefreshToken.js";
 
 @Entity("users")
 @Index("UQ_user_email", ["email"], {
@@ -45,6 +45,6 @@ export class User {
   })
   updatedAt!: Date;
 
-  // @OneToMany(() => UserRefreshToken, (token) => token.user, { lazy: true })
-  // refreshTokens!: UserRefreshToken[];
+  @OneToMany(() => UserRefreshToken, (token) => token.user, { lazy: true })
+  refreshTokens!: Promise<UserRefreshToken[]>;
 }
