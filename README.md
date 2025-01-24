@@ -65,9 +65,8 @@ A web application designed to manage users with role-based access control.
 │   │   └── role_auth.ts
 │   │   └── maintenance.ts
 │   ├── migrations
-│   │   └── create_user_table.ts
-│   │   └── create_role_table.ts
-│   │   └── create_user_role_mapping.ts
+│   │   └── create_users.ts
+│   │   └── create_user_refresh_tokens.ts
 │   ├── models
 │   │   └── user.model.ts
 │   │   └── role.model.ts
